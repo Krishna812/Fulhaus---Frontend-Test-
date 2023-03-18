@@ -15,7 +15,7 @@ const ProductsCard = (props) => {
 
     const handleAddToCart = () => {
 
-        // here, we cannot directly pass the `props` as it is, if we need to access the same value within the child component. So, we've to pass it as a different prop like this- `{...props}`
+      
         const item = { ...props };
         addItem(item);
 
