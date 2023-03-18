@@ -1,0 +1,391 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+/*--====== Variables ======--*/
+$main-font: 'Roboto', sans-serif;
+$body-color: #13131f;
+$text-color: #a9afc3;
+$text-light: #6c757d;
+$primary-color: #191c26;
+$secondary-color: #111319;
+$head-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+
+
+
+
+/*--====== Mixins ======--*/
+@mixin bordered($width, $color) {
+    border: $width solid $color;
+}
+
+@mixin flex($justify, $align) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+
+/*--====== CSS Reset ======--*/
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    width: 0.4vw;
+}
+
+::-webkit-scrollbar-track {
+    background-color: $primary-color;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: $text-color;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: $main-font;
+}
+
+input,
+button,
+textarea {
+    color: inherit;
+    border: none;
+    outline: none;
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+textarea {
+    resize: vertical;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 500;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+img,
+svg {
+    vertical-align: middle;
+    user-select: none;
+}
+
+
+/*--====== Common Styles ======--*/
+.overflow_hide {
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1320px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    display: grid;
+    grid-template-columns: 2fr repeat(1, 1fr);
+grid-template-rows: repeat(2, 1fr);
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+@media(max-width: 999px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+}
+
+/*--====== Header Section ======--*/
+#header {
+    float:right;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.navbar {
+    @include flex(space-between, center);
+}
+
+.cart_icon {
+    position: relative;
+    cursor: pointer;
+
+    .badge {
+        display: inline-block;
+        background-color: darkred;
+        color: #fff;
+        line-height: 1;
+        font-size: 0.8rem;
+        padding: 0.35rem 0.55rem;
+        border-radius: 50%;
+    }
+}
+
+
+/*--====== Home / Products Section ======--*/
+#home {
+    padding: 6rem 0 4rem;
+}
+
+.home_content_img{
+    padding:0 1rem;
+}
+.home_content_img img{
+    height:100%;
+}
+
+.home_content {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(260px, 1fr));
+    gap: 1rem;
+    text-align: center;
+
+    @media only screen and (min-width: 561px) and (max-width: 1023px) {
+        grid-template-columns: repeat(2, minmax(260px, 1fr));;
+      }
+
+    @media(max-width: 560px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.product_card {
+    @include bordered(1px, $text-color);
+    padding-top: 1rem;
+    padding:18px;
+    overflow: hidden;
+    display: grid;
+
+    img {
+        // width: 50%;
+        // max-width: 200px;
+        width:200px;
+        height:200px;
+    }
+
+    .rating {
+        float: left;
+        margin-left: 1.6rem;
+        color: sandybrown;
+        font-size: 0.8rem;
+        
+    }
+
+    .title {
+        font-size: 1rem;
+        // margin: 0.6rem 0;
+        color:black;
+    }
+
+    .price {
+        font-weight: bold;
+        float: left;
+        margin-left: 1.6rem;
+        color: black;
+    
+    }
+
+    .btn {  
+        float: right;
+        color: red;
+        padding: 10px;
+        /* background: lightgrey; */
+        border-radius: 50%;
+        font-size: 1rem;
+        transition: pink 0.3s ease;
+
+        &:hover {
+            color: green;
+        }
+
+        &.added {
+            color: green;
+        }
+    }
+}
+
+
+
+
+/*--====== Cart Section ======--*/
+#cart {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.cart_content {
+    background-color: white;
+    position: absolute;
+    top: 0;
+    right: 0;
+    max-width: 550px;
+    width: 100%;
+    height:100%;
+    
+}
+
+.cart_head {
+    padding: 1rem;
+    text-align: left;
+    margin-left:18px;
+
+    .close_btn {
+        position: absolute;
+        top: 0;
+        left: 0;
+       
+        padding: 0.4rem 0.6rem;
+        cursor: pointer;
+        opacity: 0.8;
+        transition: opacity 0.2s ease;
+
+        &:hover {
+            opacity: 1;
+        }
+
+        span {
+            font-size: 2.2rem;
+            line-height: 0.8;
+        }
+    }
+
+}
+
+.cart_body {
+    padding: 1.8rem 1.5rem;
+    max-height: 85%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.cart_items {
+    display: grid;
+    grid-template-columns: 0.5fr 0.7fr 0.2fr 0.1fr;
+    align-items: center;
+    gap: 2.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.cart_items_info {
+    .price {
+        font-weight: 600;
+        margin-top: 0.5rem;
+    }
+}
+
+.cart_items_quantity {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 0.3rem 0;
+
+    span {
+        font-size: 1.2rem;
+        background-color: $body-color;
+        line-height: 0.5;
+        padding: 0.4rem;
+        user-select: none;
+        cursor: pointer;
+
+        &:hover {
+            color: #ddd;
+        }
+    }
+}
+
+.cart_items_delete {
+    font-size: 2rem;
+    line-height: 0.5;
+    text-align: center;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.cart_foot {
+    // @include flex(space-between, center);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+
+     
+    .cart_total{
+        display:flex;
+    }
+    h3 {
+        b {
+            margin-left: 0.6rem;
+            font-size: 1.4rem;
+        }
+    }
+
+    .totalPrice{
+        font-size: 25px;
+        margin-left: 60%;
+        font-family: auto;
+        font-weight: 600;
+    }
+
+    .totalDef{
+        font-size: 25px;
+        font-family: auto;
+        font-weight: 600;
+    }
+
+
+    .checkout_btn {
+        background-color: black;
+    color: white;
+    font-size: 2rem;
+    margin-top: 1rem;
+    margin: 10px;
+    padding: 0.5rem 0.5rem;
+    width: 100%;
+
+        &[disabled] {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+}
