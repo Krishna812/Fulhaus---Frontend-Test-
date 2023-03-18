@@ -23,11 +23,11 @@
 
 <br/>
 
-## Setuo Scripts:
+## Setup Scripts:
 
 #### `npm install`
 
-#### `npm run`
+#### `npm start`
 
 <br/>
 
