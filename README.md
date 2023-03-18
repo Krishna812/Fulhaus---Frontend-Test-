@@ -10,7 +10,7 @@
 - #### Add to Cart
 - #### Remove from Cart
 - #### Calculates Total
-- #### Calculates Total
+- #### Resonsive 
 
 <br/>
 
@@ -23,7 +23,7 @@
 
 <br/>
 
-## Available Scripts:
+## Setuo Scripts:
 
 #### `npm install`
 
