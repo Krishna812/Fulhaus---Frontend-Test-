@@ -10,7 +10,7 @@
 - #### Add to Cart
 - #### Remove from Cart
 - #### Calculates Total
-- #### Resonsive 
+- #### Resonpsive 
 
 <br/>
 
